@@ -2,9 +2,9 @@
 {
     class Account
     {
-        int accountNumber;
+        public int accountNumber { get; private set; }
         Queue<string> accountLog = new Queue<string>();
-        decimal balance;
+        public decimal balance { get; private set; }
         decimal withdrawalLimit = -500.00m;
 
         public Account(int accountNumber)
@@ -30,7 +30,7 @@
             }
         }
 
-        public void TransferBalance(decimal amount, Account account)
+        public void Transfer(decimal amount, Account account)
         {
             if (balance - amount < withdrawalLimit)
                 Console.WriteLine("Saldo insuficiente");
@@ -44,22 +44,20 @@
         }
 
         public void ShowCurrentBalance()
-        {
-            Console.WriteLine("---------");
+        {          
             Console.WriteLine($"Conta N°{accountNumber}: Saldo atual: R${balance:F2}");
-            Console.WriteLine("---------");
         }
 
         public void ShowAccountLog()
         {
-            Console.WriteLine("---------");
+            Console.Clear();
+            Console.WriteLine(new string('─', UserInteraction.menuWidth + 2));
             Console.WriteLine($"Conta N°{accountNumber}: Histórico");
-            Console.WriteLine("---------");
+            Console.WriteLine(new string('─', UserInteraction.menuWidth + 2));
             foreach (string entry in accountLog)
             {
                 Console.WriteLine(entry);
             }
-            Console.WriteLine("---------");
         }
 
         public void AddLogEntry(string record)
