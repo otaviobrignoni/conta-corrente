@@ -22,18 +22,26 @@
         public void Withdrawal(decimal amount)
         {
             if (balance - amount < withdrawalLimit)
-                Console.WriteLine("Saldo insuficiente");
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Conta N°{accountNumber}: Saldo insuficiente");
+                Console.WriteLine();
+            }
             else
             {
                 balance -= amount;
-                AddLogEntry($"Saque: +R${amount}");
+                AddLogEntry($"Saque: -R${amount}");
             }
         }
 
         public void TransferBalance(decimal amount, Account account)
         {
             if (balance - amount < withdrawalLimit)
-                Console.WriteLine("Saldo insuficiente");
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Conta N°{accountNumber}: Saldo insuficiente");
+                Console.WriteLine();
+            }
             else
             {
                 balance -= amount;
@@ -45,21 +53,20 @@
 
         public void ShowCurrentBalance()
         {
-            Console.WriteLine("---------");
+            Console.WriteLine();
             Console.WriteLine($"Conta N°{accountNumber}: Saldo atual: R${balance:F2}");
-            Console.WriteLine("---------");
+            Console.WriteLine();
         }
 
         public void ShowAccountLog()
         {
-            Console.WriteLine("---------");
+            Console.WriteLine();
             Console.WriteLine($"Conta N°{accountNumber}: Histórico");
-            Console.WriteLine("---------");
             foreach (string entry in accountLog)
             {
                 Console.WriteLine(entry);
             }
-            Console.WriteLine("---------");
+            Console.WriteLine();
         }
 
         public void AddLogEntry(string record)

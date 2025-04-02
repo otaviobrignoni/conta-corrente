@@ -14,12 +14,17 @@ internal class Program
 
         account1.Deposit(1000);
         account1.TransferBalance(500, account2);
-        account3.Withdrawal(1499.99m);
-        account3.TransferBalance(10, account1);
+        account3.Withdrawal(1400);
+        account3.TransferBalance(1000, account1);
 
         account1.ShowAccountLog();
         account2.ShowAccountLog();
         account3.ShowAccountLog();
+
+        account1.ShowCurrentBalance();
+        account2.ShowCurrentBalance();
+        account3.ShowCurrentBalance();
+
         Console.ReadKey();
     }
 }
